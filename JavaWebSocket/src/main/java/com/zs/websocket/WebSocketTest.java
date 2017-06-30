@@ -1,4 +1,4 @@
-package com.uptop.websocket;
+package com.zs.websocket;
 
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
