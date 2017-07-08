@@ -2,6 +2,11 @@ package com.zs.websocket;
 
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
+
+import com.zs.bean.Centaur;
+import com.zs.tools.BaseTools;
+import com.zs.tools.Monitor;
+
 import java.io.IOException;
 import java.util.concurrent.CopyOnWriteArraySet;
 
@@ -21,7 +26,9 @@ public class WebSocketTest {
 
     //与某个客户端的连接会话，需要通过它来给客户端发送数据
     private Session session;
-
+    //测试的
+    public static Centaur centaur=new Centaur();
+    
     /**
      * 连接建立成功调用的方法
      *
@@ -54,6 +61,13 @@ public class WebSocketTest {
     @OnMessage
     public void onMessage(String message, Session session) {
         System.out.println("来自客户端的消息:" + message);
+        if(message.contains("/move:")){
+        	String ss[]=message.split(":");
+        	centaur.move(ss[1]);
+        	message=centaur.getNow();
+        }else if(message.equals("/movearea:")){
+        	message=BaseTools.gson.toJson(centaur.getMoveArea());
+        }
         //群发消息
         for (WebSocketTest item : webSocketSet) {
             try {

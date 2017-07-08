@@ -2,12 +2,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>index Page</title>
+    <title>webscoket测试</title>
 </head>
 <body>
     Welcome<br/><input id="text" type="text"/>
     <button onclick="send()">发送消息</button>
     <hr/>
+    
+    <input type="button" value="向上移动" onclick="move('UP')"/>
+    <input type="button" value="向下移动" onclick="move('DOWN')"/>
+    <input type="button" value="向左移动" onclick="move('LEFT')"/>
+    <input type="button" value="向右移动" onclick="move('RIGHT')"/>
+    
+    
+    <input type="button" value="查看可移动范围" onclick="seeMoveArea()"/>
+    <hr>
     <button onclick="closeWebSocket()">关闭WebSocket连接</button>
     <hr/>
     <div id="message"></div>
@@ -54,11 +63,9 @@
     //将消息显示在网页上
     function setMessageInnerHTML(innerHTML) {
     	var msg=innerHTML.split(" - ")
-		
 		var table=document.getElementById("tb");
-
-		 var row;
-		 row=table.insertRow(1);
+		var row;
+		row=table.insertRow(1);
 		for(var i=0;i<msg.length;i++){
 			 var cell = row.insertCell(i);
 		 	 cell.appendChild(document.createTextNode(msg[i]));
@@ -78,6 +85,12 @@
     function send() {
         var message = document.getElementById('text').value;
         websocket.send(message);
+    }
+    function move(dir){
+    	websocket.send("/move:"+dir);
+    }
+    function seeMoveArea(){
+    	websocket.send("/movearea:");
     }
 </script>
 </html>
