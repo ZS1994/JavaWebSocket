@@ -50,6 +50,9 @@ public class Unit {
 		}
 		return list;
 	}
+	public Position getNowPosition(){
+		return new Position(x, y);
+	}
 	//------------------------
 	public long getX() {
 		return x;

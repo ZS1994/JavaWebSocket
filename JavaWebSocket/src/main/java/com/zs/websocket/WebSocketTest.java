@@ -4,6 +4,7 @@ import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 
 import com.zs.bean.Centaur;
+import com.zs.bean.Position;
 import com.zs.tools.BaseTools;
 import com.zs.tools.Monitor;
 
@@ -63,10 +64,15 @@ public class WebSocketTest {
         System.out.println("来自客户端的消息:" + message);
         if(message.contains("/move:")){
         	String ss[]=message.split(":");
-        	centaur.move(ss[1]);
-        	message=centaur.getNow();
+        	long x=Long.valueOf(ss[1].split(",")[0]);
+        	long y=Long.valueOf(ss[1].split(",")[1]);
+        	Position position=new Position(x, y);
+        	Position pi=centaur.move(position);
+        	message=BaseTools.gson.toJson(pi);
         }else if(message.equals("/movearea:")){
         	message=BaseTools.gson.toJson(centaur.getMoveArea());
+        }else if(message.equals("/nowPosition:")){
+        	message=BaseTools.gson.toJson(centaur.getNowPosition());
         }
         //群发消息
         for (WebSocketTest item : webSocketSet) {

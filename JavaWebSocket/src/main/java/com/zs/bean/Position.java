@@ -15,6 +15,10 @@ public class Position {
 	public void setY(long y) {
 		this.y = y;
 	}
+	
+	public boolean equals(Position obj) {
+		return (x==obj.x && y==obj.y);
+	}
 	public Position(long x, long y) {
 		super();
 		this.x = x;
@@ -23,5 +27,6 @@ public class Position {
 	public Position() {
 		super();
 	}
+	
 	
 }
