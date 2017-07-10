@@ -37,149 +37,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <hr/>
     <div id="message"></div>
     <table border="1">
-		<tr>
-			<td id="-5_5">-5,5</td>
-			<td id="-4_5">-4,5</td>
-			<td id="-3_5">-3,5</td>
-			<td id="-2_5">-2,5</td>
-			<td id="-1_5">-1,5</td>
-			<td id="0_5">0,5</td>
-			<td id="1_5">1,5</td>
-			<td id="2_5">2,5</td>
-			<td id="3_5">3,5</td>
-			<td id="4_5">4,5</td>
-			<td id="5_5">5,5</td>
-		</tr>
-		<tr>
-			<td id="-5_4">-5,4</td>
-			<td id="-4_4">-4,4</td>
-			<td id="-3_4">-3,4</td>
-			<td id="-2_4">-2,4</td>
-			<td id="-1_4">-1,4</td>
-			<td id="0_4">0,4</td>
-			<td id="1_4">1,4</td>
-			<td id="2_4">2,4</td>
-			<td id="3_4">3,4</td>
-			<td id="4_4">4,4</td>
-			<td id="5_4">5,4</td>
-		</tr>
-		<tr>
-			<td id="-5_3">-5,3</td>
-			<td id="-4_3">-4,3</td>
-			<td id="-3_3">-3,3</td>
-			<td id="-2_3">-2,3</td>
-			<td id="-1_3">-1,3</td>
-			<td id="0_3">0,3</td>
-			<td id="1_3">1,3</td>
-			<td id="2_3">2,3</td>
-			<td id="3_3">3,3</td>
-			<td id="4_3">4,3</td>
-			<td id="5_3">5,3</td>
-		</tr>
-		<tr>
-			<td id="-5_2">-5,2</td>
-			<td id="-4_2">-4,2</td>
-			<td id="-3_2">-3,2</td>
-			<td id="-2_2">-2,2</td>
-			<td id="-1_2">-1,2</td>
-			<td id="0_2">0,2</td>
-			<td id="1_2">1,2</td>
-			<td id="2_2">2,2</td>
-			<td id="3_2">3,2</td>
-			<td id="4_2">4,2</td>
-			<td id="5_2">5,2</td>
-		</tr>
-		<tr>
-			<td id="-5_1">-5,1</td>
-			<td id="-4_1">-4,1</td>
-			<td id="-3_1">-3,1</td>
-			<td id="-2_1">-2,1</td>
-			<td id="-1_1">-1,1</td>
-			<td id="0_1">0,1</td>
-			<td id="1_1">1,1</td>
-			<td id="2_1">2,1</td>
-			<td id="3_1">3,1</td>
-			<td id="4_1">4,1</td>
-			<td id="5_1">5,1</td>
-		</tr>
-		<tr>
-			<td id="-5_0">-5,0</td>
-			<td id="-4_0">-4,0</td>
-			<td id="-3_0">-3,0</td>
-			<td id="-2_0">-2,0</td>
-			<td id="-1_0">-1,0</td>
-			<td id="0_0">0,0</td>
-			<td id="1_0">1,0</td>
-			<td id="2_0">2,0</td>
-			<td id="3_0">3,0</td>
-			<td id="4_0">4,0</td>
-			<td id="5_0">5,0</td>
-		</tr>
-		<tr>
-			<td id="-5_-1">-5,-1</td>
-			<td id="-4_-1">-4,-1</td>
-			<td id="-3_-1">-3,-1</td>
-			<td id="-2_-1">-2,-1</td>
-			<td id="-1_-1">-1,-1</td>
-			<td id="0_-1">0,-1</td>
-			<td id="1_-1">1,-1</td>
-			<td id="2_-1">2,-1</td>
-			<td id="3_-1">3,-1</td>
-			<td id="4_-1">4,-1</td>
-			<td id="5_-1">5,-1</td>
-		</tr>
-		<tr>
-			<td id="-5_-2">-5,-2</td>
-			<td id="-4_-2">-4,-2</td>
-			<td id="-3_-2">-3,-2</td>
-			<td id="-2_-2">-2,-2</td>
-			<td id="-1_-2">-1,-2</td>
-			<td id="0_-2">0,-2</td>
-			<td id="1_-2">1,-2</td>
-			<td id="2_-2">2,-2</td>
-			<td id="3_-2">3,-2</td>
-			<td id="4_-2">4,-2</td>
-			<td id="5_-2">5,-2</td>
-		</tr>  
-		<tr>
-			<td id="-5_-3">-5,-3</td>
-			<td id="-4_-3">-4,-3</td>
-			<td id="-3_-3">-3,-3</td>
-			<td id="-2_-3">-2,-3</td>
-			<td id="-1_-3">-1,-3</td>
-			<td id="0_-3">0,-3</td>
-			<td id="1_-3">1,-3</td>
-			<td id="2_-3">2,-3</td>
-			<td id="3_-3">3,-3</td>
-			<td id="4_-3">4,-3</td>
-			<td id="5_-3">5,-3</td>
-		</tr>
-		<tr>
-			<td id="-5_-4">-5,-4</td>
-			<td id="-4_-4">-4,-4</td>
-			<td id="-3_-4">-3,-4</td>
-			<td id="-2_-4">-2,-4</td>
-			<td id="-1_-4">-1,-4</td>
-			<td id="0_-4">0,-4</td>
-			<td id="1_-4">1,-4</td>
-			<td id="2_-4">2,-4</td>
-			<td id="3_-4">3,-4</td>
-			<td id="4_-4">4,-4</td>
-			<td id="5_-4">5,-4</td>
-		</tr>
-		<tr>
-			<td id="-5_-5">-5,-5</td>
-			<td id="-4_-5">-4,-5</td>
-			<td id="-3_-5">-3,-5</td>
-			<td id="-2_-5">-2,-5</td>
-			<td id="-1_-5">-1,-5</td>
-			<td id="0_-5">0,-5</td>
-			<td id="1_-5">1,-5</td>
-			<td id="2_-5">2,-5</td>
-			<td id="3_-5">3,-5</td>
-			<td id="4_-5">4,-5</td>
-			<td id="5_-5">5,-5</td>
-		</tr>
+    	<%for(int i=-5;i<=5;i++){ %>
+    	<tr>
+    		<%for(int j=-5;j<=5;j++){ %>
+    		<td id="<%=j %>_<%=i %>" onclick="move2('<%=j%>','<%=i%>')" style="cursor: pointer;"><%=j %>,<%=i %></td>
+    		<%} %>
+    	</tr>
+    	<%} %>
     </table>
     <table id="tb" class="altrowstable">
 		<th align="center"  colspan="9">实时信息监控</th>
@@ -275,6 +139,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     function move(){
     	var x=$("#x").val();
     	var y=$("#y").val();
+    	websocket.send("/move:"+x+','+y);
+    	handle="move";
+    }
+    function move2(x,y){
     	websocket.send("/move:"+x+','+y);
     	handle="move";
     }
