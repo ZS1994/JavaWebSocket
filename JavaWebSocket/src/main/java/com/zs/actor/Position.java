@@ -1,4 +1,4 @@
-package com.zs.bean;
+package com.zs.actor;
 
 public class Position {
 	private long x;

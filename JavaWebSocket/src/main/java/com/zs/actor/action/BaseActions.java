@@ -1,6 +1,6 @@
-package com.zs.bean.action;
+package com.zs.actor.action;
 
-import com.zs.bean.Position;
+import com.zs.actor.Position;
 
 /**2017-7-8
  * 一些基本动作

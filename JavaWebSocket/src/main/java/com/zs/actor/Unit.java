@@ -1,4 +1,4 @@
-package com.zs.bean;
+package com.zs.actor;
 
 import java.util.ArrayList;
 import java.util.List;

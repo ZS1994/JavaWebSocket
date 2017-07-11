@@ -1,8 +1,8 @@
-package com.zs.bean;
+package com.zs.actor;
 
 import java.util.List;
 
-import com.zs.bean.action.BaseActions;
+import com.zs.actor.action.BaseActions;
 import com.zs.tools.BaseTools;
 
 /**2017-7-8

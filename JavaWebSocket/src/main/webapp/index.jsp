@@ -8,6 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
     <title>webscoket测试</title>
     <script type="text/javascript" src="<%=path%>/framework/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=path%>/framework/json/json2.js"></script>
     <style type="text/css">
     .nowPosition{
     	background-color: red;
@@ -30,7 +31,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	X:<input id="x" type="text"/>
  	Y:<input id="y" type="text"/>
     <input type="button" value="移动" onclick="move()"/>
-    
+    <br>
+    <input type="button" value="测试" onclick="test()"/>
     
     <hr>
     <button onclick="closeWebSocket()">关闭WebSocket连接</button>
@@ -51,7 +53,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 
 <script type="text/javascript">
-	var handle="";//当前执行谁的标志
     var websocket = null;
     //判断当前浏览器是否支持WebSocket
     if ('WebSocket' in window) {
@@ -74,30 +75,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     //接收到消息的回调方法
     websocket.onmessage = function (event) {
    		var json;
-    	//console.log(event);
-    	//console.log(handle);
-    	if(handle=="seeNowPosition"){
+   		json=eval('(' + event.data + ')');
+   		console.log(json);
+    	if(json.code=="nowPosition" || json.code=="move"){
     		$("td").removeClass("nowPosition");
-    		json=eval('(' + event.data + ')');
-    		//console.log("#"+json.x+"_"+json.y);
-    		$("#"+json.x+"_"+json.y).addClass("nowPosition");
-    	}else if(handle=="seeMoveArea"){
+    		$("#"+json.data.x+"_"+json.data.y).addClass("nowPosition");
+    	}else if(json.code=="movearea"){
     		$("td").removeClass("moveArea");
-    		json=eval('(' + event.data + ')');
-    		for (var i = 0; i < json.length; i++) {
-				var posi = json[i];
-				//console.log(posi);
+    		for (var i = 0; i < json.data.length; i++) {
+				var posi = json.data[i];
 	    		$("#"+posi.x+"_"+posi.y).addClass("moveArea");
 			}
-    	}else if(handle=="move"){
-    		$("td").removeClass("nowPosition");
-    		json=eval('(' + event.data + ')');
-    		$("#"+json.x+"_"+json.y).addClass("nowPosition");
-    	}
-    	else{
+    	}else{
 	        setMessageInnerHTML(event.data);
     	}
-    	handle="";//这里归零
     }
 
     //连接关闭的回调方法
@@ -139,20 +130,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     function move(){
     	var x=$("#x").val();
     	var y=$("#y").val();
-    	websocket.send("/move:"+x+','+y);
-    	handle="move";
+    	var s={};
+    	s.code="move";
+    	s.id="1";
+    	s.data={};
+    	s.data.x=x;
+    	s.data.y=y;
+    	websocket.send(JSON.stringify(s));
     }
     function move2(x,y){
-    	websocket.send("/move:"+x+','+y);
-    	handle="move";
+    	var s={};
+    	s.code="move";
+    	s.id="1";
+    	s.data={};
+    	s.data.x=x;
+    	s.data.y=y;
+    	websocket.send(JSON.stringify(s));
     }
     function seeMoveArea(){
-    	websocket.send("/movearea:");
-    	handle="seeMoveArea";
+    	var s={};
+    	s.code="movearea";
+    	s.id="1";
+    	websocket.send(JSON.stringify(s));
     }
     function seeNowPosition(){
-    	websocket.send("/nowPosition:");
-    	handle="seeNowPosition"; 
+    	var s={};
+    	s.code="nowPosition";
+    	s.id="1";
+    	websocket.send(JSON.stringify(s));
+    }
+    function test(){
+    	var s={};
+    	s.code="nowPosition";
+    	s.id="1";
+    	websocket.send(JSON.stringify(s));
     }
 </script>
 </html>

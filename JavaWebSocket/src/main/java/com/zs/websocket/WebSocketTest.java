@@ -3,8 +3,10 @@ package com.zs.websocket;
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 
-import com.zs.bean.Centaur;
-import com.zs.bean.Position;
+import com.zs.actor.Centaur;
+import com.zs.actor.Position;
+import com.zs.bean.Accept;
+import com.zs.bean.Command;
 import com.zs.tools.BaseTools;
 import com.zs.tools.Monitor;
 
@@ -61,18 +63,21 @@ public class WebSocketTest {
      */
     @OnMessage
     public void onMessage(String message, Session session) {
+    	if(message==null)return;
         System.out.println("来自客户端的消息:" + message);
-        if(message.contains("/move:")){
-        	String ss[]=message.split(":");
-        	long x=Long.valueOf(ss[1].split(",")[0]);
-        	long y=Long.valueOf(ss[1].split(",")[1]);
+        Accept accept=BaseTools.gson.fromJson(message, Accept.class);
+        if(accept.getCode().equals(Command.MOVE)){
+        	long x=Long.valueOf(accept.getData().get("x"));
+        	long y=Long.valueOf(accept.getData().get("y"));
         	Position position=new Position(x, y);
         	Position pi=centaur.move(position);
-        	message=BaseTools.gson.toJson(pi);
-        }else if(message.equals("/movearea:")){
-        	message=BaseTools.gson.toJson(centaur.getMoveArea());
-        }else if(message.equals("/nowPosition:")){
-        	message=BaseTools.gson.toJson(centaur.getNowPosition());
+        	message=BaseTools.gson.toJson(new Command(Command.MOVE, pi));
+        }else if(accept.getCode().equals(Command.MOVEAREA)){
+        	message=BaseTools.gson.toJson(new Command(Command.MOVEAREA, centaur.getMoveArea()));
+        }else if(accept.getCode().equals(Command.NOW_POSITION)){
+        	message=BaseTools.gson.toJson(new Command(Command.NOW_POSITION, centaur.getNowPosition()));
+        }else{
+        	message=BaseTools.gson.toJson(new Command(Command.TEXT, message));
         }
         //群发消息
         for (WebSocketTest item : webSocketSet) {
